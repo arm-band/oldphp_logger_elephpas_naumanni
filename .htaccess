@@ -1,0 +1,9 @@
+# アクセスブロック
+SetEnvIf Request_URI "(\.(log|txt|htaccess|htpasswd)|/(log|tmp)/)$" ng_dir
+Order Allow,Deny
+Allow from all
+Deny from env=ng_dir
+
+# エラーログ出力先変更
+php_flag log_errors On
+php_value error_log naumann/log/error_log.log
